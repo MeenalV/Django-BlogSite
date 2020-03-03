@@ -1,0 +1,38 @@
+requirements to create a site :
+
+NEed a welcome Page :
+	with few blogs to display
+	click the blog
+	need login page
+	sample blogs display
+ 
+table to maintain login details
+	2 tables : 1 writer , 1 for reader
+	table for writer data : 1. writer id , writer username , full name, id, password, date of registration , active/inactive
+							2. id , writer id, last login time , 
+	table for reader : 1. reader id , reader username , full name , email id, password, date of registration, active/inactive
+					   2. id, reader id, blog id , interaction medium : comment/like/share , interaction id
+	table for blogs : 1. blog id , writer id, writer username , title of blog, content of blog , topic related to , date of writing 					, date of uploading , date of deleting , date of content updating , active/inactive				   							  2. interaction id , blog id , interaction type , writer/reader id, date of interaction
+
+
+first page :
+	a writer or (you can register or you can write anonymously but then we wont be able to tell people how amazing you are as a writer)
+	a reader (you can register with us or you can login as guest but then we wont be able to reach out to you and notify you about all the amazing new blogs)
+	login accordingly
+
+
+writer logs in -  url "/bloggerhere/"
+	show a page with 'title of the blog'	
+	textarea to write the blog
+	topics it links to
+
+
+blogger logs in - url "/readerhere/"
+	show a page with topics 
+	show 3 trending posts
+	show post with ...
+		after clicking, 
+		show a comment, like, share option
+		click comment and show text box
+		click like and show like activated
+		click share and show various options to share
