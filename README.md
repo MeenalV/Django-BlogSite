@@ -1,0 +1,19 @@
+# Django-BlogSite
+
+Hello People!!
+
+So here I am trying to build a really small and basic Blog Site with the very basic functionalities of 
+  Loging in
+  writing blogs/ reading blogs
+  commenting
+  liking 
+  sharing
+  displaying blogs
+
+I am really new to django but I want to excel in it.
+
+Here you can easily trace the files, the names are self descriptive (I'll be updating the flow in my next push)
+
+The requirements that I find important are present in "note.txt" file.
+
+Any contribution is appreciable :)
