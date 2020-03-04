@@ -16,4 +16,14 @@ Here you can easily trace the files, the names are self descriptive (I'll be upd
 
 The requirements that I find important are present in "note.txt" file.
 
+
+# Contributing to the project
+
+So you can contribute the project by following these simple steps :
+	1. Move to folder you want the project to be present
+	2. open cmd and use the following command : git clone https://github.com/MeenalV/Django-BlogSite.git
+	3. The project is now present on your local system!!
+
+Happy Coding!! :)
+
 Any contribution is appreciable :)
