@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+</head>
+<body>
+	<form method = 'post'>
+		{% csrf_token %}
+		{{login}}
+		<button type = 'submit'>Submit</button>
+		<hr>
+	</form>
+</body>
+</html>

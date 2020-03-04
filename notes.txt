@@ -7,7 +7,7 @@ NEed a welcome Page :
 	sample blogs display
  
 table to maintain login details
-	2 tables : 1 writer , 1 for reader
+	3 tables : 1 writer , 1 for reader , 1 for blog details
 	table for writer data : 1. writer id , writer username , full name, id, password, date of registration , active/inactive
 							2. id , writer id, last login time , 
 	table for reader : 1. reader id , reader username , full name , email id, password, date of registration, active/inactive
