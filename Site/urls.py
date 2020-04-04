@@ -19,5 +19,5 @@ from Site import views
 
 urlpatterns = [
     path('', views.display_Blog , name = 'dislpay' ) , 
-    path('login', views.login_Page , name = 'login' ) , 
+   
 ]

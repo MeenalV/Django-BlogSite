@@ -1,0 +1,6 @@
+<h2>Register</h2>
+<form method="post" novalidate>
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Register</button> <button name="login_btn"><a href="/accounts/login">already register</a> </button>
+</form>
