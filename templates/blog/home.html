@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1 class="text-center">Blogs</h1>
+{% if blogs %}
+{% for blog in blogs %}
+<div class="text-center">
+    <h6>{{blog.title}}</h6>
+    <p>{{blog.category}}</p>
+    <section>
+        {{blog.content}}
+    </section>
+    <p><span class="text-left">Posted by: </span>{{blog.by}},
+    <span class="text-right">{{blog.created_at|date}}</span></p>
+
+</div>
+{% endfor %}
+
+{% else %}
+<div class="text-center">No Blog found </div>
+{% endif %}
+
+
+{% if my_blogs %}
+<h1 class="text-center">My Blogs</h1>
+
+{% for blog in my_blogs %}
+<div class="text-center">
+    <h6>{{blog.title}}</h6>
+    <p>{{blog.category}}</p>
+    <section>
+        {{blog.content}}
+    </section>
+    <p><span class="text-left">published: </span>{{blog.published}},
+    <span class="text-right">{{blog.created_at|date}}</span></p>
+
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

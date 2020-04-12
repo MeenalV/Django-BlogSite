@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=no">
+    <title>{{page_title|default:"Blog site" }}</title>
+    <link rel="stylesheet" href='{% static "css/bootstrap_4.4.min.css" %}'>
+</head>
+<body>
+<div class="__next">
+	<!-- header start -->
+		<nav class="navbar navbar-inverse custum-navigation">
+		<div class="cus-container">
+			<div class="container-fluid">
+
+				<div class="navigation-links" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right header-links">
+					<li><a href="{%url 'index'%}" title="Blog site">Home</a></li>
+					<li><a href="{%url 'write_blog'%}" title="Start Blogging">Start Blogging</a></li>
+
+						<li><a href="{%url 'register'%}"  title="Register">Register</a></li>
+
+                       <li class="login-btn-blk" id="login-list">
+                       <a href="{% url 'login' %}"  title="Login" >Login<span class="drop-icon"></span></a>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        <li >
+                            <a href="{% url 'user_logout' %}" title="logout">Logout</a>
+
+                        </li>
+						<li >
+                            <a href="{% url 'change_password' %}" title="change_password">Change Password</a>
+
+                        </li>
+                        {% endif %}
+                    </ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	</div>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
