@@ -14,7 +14,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.utils.translation import ugettext_lazy as _
-
+from common.notification import Common
+common = Common()
 # Create your views here.
 
 
@@ -117,7 +118,7 @@ def reset_password(request):
                         }
                         mail_list.append(mail_args)
                         if mail_list:
-                            # common.send_mass_mail(mail_list)
+                            common.send_mass_mail(mail_list)
                             print()
                         return redirect(_('password_reset_done'))
                     else:
