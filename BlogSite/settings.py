@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIR = os.path.join(BASE_DIR , 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'blog' ,
+    # 'accounts',
+    # 'blog',
+    'rest_framework',
+    'api',
 
 ]
 
@@ -77,27 +79,27 @@ WSGI_APPLICATION = 'BlogSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogsite',
-        'USER': 'root',
-        'PASSWORD': 'ztech@44',
-        'HOST':'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+# DATABASES = {
+#  'default': {
+#       'ENGINE': 'django.db.backends.mysql',
+#     'NAME': 'blogsite',
+#    'USER': 'root',
+#   'PASSWORD': 'ztech@44',
+#  'HOST':'localhost',
+# 'PORT': '3306',
+# 'OPTIONS': {
+#   'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#    },
+# }
+# }
 
 
 # Password validation
@@ -132,16 +134,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'accounts.User'
-LOGOUT_REDIRECT_URL = '/accounts/login'
-LOGIN_REDIRECT_URL = '/accounts/login'
+#AUTH_USER_MODEL = 'accounts.User'
+#LOGOUT_REDIRECT_URL = '/accounts/login'
+#LOGIN_REDIRECT_URL = '/accounts/login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ STATIC_DIR,
-]
+STATICFILES_DIRS = [STATIC_DIR,
+                    ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -150,3 +152,10 @@ EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_USE_TLS = True
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
