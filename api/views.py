@@ -8,7 +8,6 @@ from .serializers import userProfileSerializer
 class UserProfileListCreateView(ListCreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = userProfileSerializer
-    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         user = self.request.user
