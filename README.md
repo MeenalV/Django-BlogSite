@@ -19,11 +19,13 @@ The requirements that I find important are present in "note.txt" file.
 
 # Contributing to the project
 
-So you can contribute the project by following these simple steps :
+So you can contribute the project by following http://127.0.0.1:8000/hese simple steps :
 	1. Move to folder you want the project to be present
 	2. open cmd and use the following command : git clone https://github.com/MeenalV/Django-BlogSite.git
 	3. The project is now present on your local system!!
 
 Happy Coding!! :)
 
+# API Endpoints 
+	auth/all-profile   Show all the superuser
 Any contribution is appreciable :)
