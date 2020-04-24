@@ -17,13 +17,13 @@ class BlogFrom(forms.Form):
     #                              widget=forms.Select(attrs={'class': 'form-control',
     #                                                         'placeholder': 'Let''s start writing!!!'}))
     category = forms.ChoiceField(choices=[(category.id, category.name)for category in Category.objects.all()],
-                                 required=True,
+                                 required=False,
                                  widget=forms.Select(attrs={'class': 'form-control',
                                                             'placeholder': 'Let''s start writing!!!'}))
     content = forms.CharField(widget=forms.Textarea(attrs=({'class': 'form-control',
                                                             'placeholder': 'Let''s start writing!!!'})), required=True)
-    blog_category = Category.objects.all()
-    blog_category_choices = [(category.id, category.name) for category in blog_category]
+    # blog_category = Category.objects.all()
+    # blog_category_choices = [(category.id, category.name) for category in blog_category]
 
     # def __init__(self, *args, **kwargs):
     #     super(BlogFrom, self).__init__(*args, **kwargs)
