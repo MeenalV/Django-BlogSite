@@ -15,15 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# rom blog import views
-#from accounts.views import BlogLoginView
+from rest_framework.documentation import include_docs_urls
+from rest_framework.permissions import AllowAny
+from django.conf.urls import url
+from accounts import api as account_api
+from rest_framework_simplejwt import views as jwt_views
+
+
+admin.site.site_header = "BlogSite"
+admin.site.site_title = "BlogSite"
+admin.site.index_title = "Welcome to BlogSite Admin Portal"
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('accounts.urls')),
-    #path('accounts/login/', BlogLoginView.as_view(), name='login'),
-    #path('', include('blog.urls')),
-    #path('accounts/', include('django.contrib.auth.urls')),
-    path('auth/', include('api.urls')),
-    path("api/auth/", include("api.urls")),
+    path('api/docs/', include_docs_urls(title=admin.site.site_header, permission_classes=(AllowAny,), )),
+    path('', include('accounts.urls')),
+    path('', include('blog.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path(r'api/v1/auth/login/token/', account_api.ObtainAccessTokenView.as_view(), name='token_obtain'),
+    path(r'api/v1/auth/login/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    # path('accounts/login/', BlogLoginView.as_view(), name='login'),
+    # path('auth/', include('api.urls')),
+    # path("api/auth/", include("api.urls")),
 ]

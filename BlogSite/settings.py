@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'accounts',
-    # 'blog',
+    'accounts',
+    'blog',
     'rest_framework',
-    'api',
+    # 'api',
 
 ]
 
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BlogSite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -88,19 +86,18 @@ DATABASES = {
 
 
 # DATABASES = {
-#  'default': {
-#       'ENGINE': 'django.db.backends.mysql',
-#     'NAME': 'blogsite',
-#    'USER': 'root',
-#   'PASSWORD': 'ztech@44',
-#  'HOST':'localhost',
-# 'PORT': '3306',
-# 'OPTIONS': {
-#   'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#    },
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'blogsite',
+#         'USER': 'root',
+#         'PASSWORD': 'ztech@44',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     }
 # }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -120,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -134,9 +130,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-#AUTH_USER_MODEL = 'accounts.User'
-#LOGOUT_REDIRECT_URL = '/accounts/login'
-#LOGIN_REDIRECT_URL = '/accounts/login'
+AUTH_USER_MODEL = 'accounts.User'
+# LOGOUT_REDIRECT_URL = '/accounts/login'
+# LOGIN_REDIRECT_URL = '/accounts/login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -153,9 +149,10 @@ EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_USE_TLS = True
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+
 }

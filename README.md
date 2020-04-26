@@ -19,10 +19,12 @@ The requirements that I find important are present in "note.txt" file.
 
 # Contributing to the project
 
-So you can contribute the project by following http://127.0.0.1:8000/hese simple steps :
-	1. Move to folder you want the project to be present
-	2. open cmd and use the following command : git clone https://github.com/MeenalV/Django-BlogSite.git
-	3. The project is now present on your local system!!
+So you can contribute the project by following http://127.0.0.1:8000/api/docs/ simple steps :
+1. Move to folder you want the project to be present
+2. open cmd and use the following command : git clone https://github.com/MeenalV/Django-BlogSite.git
+3. The project is now present on your local system!!
+4. go to root directory of project and create virtual env using following command "python3 -m venv env". then 
+	    activate virtual env and run following command 'pip install -r requirements.txt'.
 
 Happy Coding!! :)
 

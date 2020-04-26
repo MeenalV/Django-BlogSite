@@ -84,8 +84,8 @@ class RegisterBloggerForm(forms.Form):
         data = self.cleaned_data
         user = User(
             email=data['email'],
-            first_name= data['first_name'],
-            last_name = data['last_name'],
+            first_name=data['first_name'],
+            last_name=data['last_name'],
             is_active=False,
             password=make_password(data['password']),
             is_writer=True

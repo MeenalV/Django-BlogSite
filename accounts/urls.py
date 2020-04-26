@@ -1,9 +1,14 @@
 from django.urls import path
-from django.conf.urls import url
+from django.conf.urls import url, include
+from rest_framework import routers
 from accounts import views as account_views
+from accounts.api import UserRegisterView
 
+router = routers.DefaultRouter()
+router.register('^user', UserRegisterView, 'user')
 
 urlpatterns = [
+    path('api/v1/', include(router.urls)),
     path(r'register/',  account_views.register, name='register'),
     path(r'register/blogger/',  account_views.register_blogger, name='register_blogger'),
     path(r'accounts/profile/',  account_views.test, name='test'),

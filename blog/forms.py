@@ -12,27 +12,26 @@ class BlogFrom(forms.Form):
                             widget=forms.TextInput(
                                 attrs=({'class': 'form-control',
                                         'placeholder': 'Enter the Title for your Blog'})))
-    # category = forms.ChoiceField(choices=[(category.id, category.name)for category in Category.objects.all()],
-    #                              required=True,
-    #                              widget=forms.Select(attrs={'class': 'form-control',
-    #                                                         'placeholder': 'Let''s start writing!!!'}))
-    category = forms.ChoiceField(choices=[(category.id, category.name)for category in Category.objects.all()],
-                                 required=False,
-                                 widget=forms.Select(attrs={'class': 'form-control',
-                                                            'placeholder': 'Let''s start writing!!!'}))
+    try:
+        category = forms.ChoiceField(choices=[(category.id, category.name)for category in Category.objects.all()],
+                                     required=False,
+                                     widget=forms.Select(attrs={'class': 'form-control'}))
+    except Exception:
+        pass
     content = forms.CharField(widget=forms.Textarea(attrs=({'class': 'form-control',
                                                             'placeholder': 'Let''s start writing!!!'})), required=True)
-    # blog_category = Category.objects.all()
-    # blog_category_choices = [(category.id, category.name) for category in blog_category]
 
-    # def __init__(self, *args, **kwargs):
-    #     super(BlogFrom, self).__init__(*args, **kwargs)
-    #     blog_category = Category.objects.all()
-    #     blog_category_choices = [(category.id, category.name) for category in blog_category]
-    #     blog_category_choices.insert(0, (u"", u"Choose blog category"))
-    #     self.fields['category'] = forms.ChoiceField(choices=blog_category_choices,
-    #                                                 required=True,
-    #                                                 widget=forms.Select(attrs={'class': 'form-control'}))
+    def __init__(self, *args, **kwargs):
+        super(BlogFrom, self).__init__(*args, **kwargs)
+        try:
+            blog_category = Category.objects.all()
+            blog_category_choices = [(category.id, category.name) for category in blog_category]
+            blog_category_choices.insert(0, (u"", u"Choose blog category"))
+            self.fields['category'] = forms.ChoiceField(choices=blog_category_choices,
+                                                        required=True,
+                                                        widget=forms.Select(attrs={'class': 'form-control'}))
+        except Exception:
+            pass
 
     def save(self, user):
         data = self.cleaned_data
