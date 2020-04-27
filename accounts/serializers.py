@@ -62,3 +62,33 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         if not users:
             raise Http404
         return users
+
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+    old_password = serializers.CharField(max_length=25, min_length=8,
+                                         style={'input_type': 'password', 'placeholder': 'old password'})
+    new_password = serializers.CharField(max_length=25, min_length=8,
+                                     style={'input_type': 'password', 'placeholder': 'new password'})
+    confirm_password = serializers.CharField(max_length=25, min_length=8,
+                                             style={'input_type': 'password', 'placeholder': 'confirm password'})
+
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password', 'confirm_password')
+
+    def validate(self, data):
+        if data['new_password'] != data['confirm_password']:
+            raise serializers.ValidationError({"confirm_password": "password and confirm password not match."})
+        return data
+
+    def change_password(self, by):
+        user = User.objects.filter(email=by.email).first()
+        if not user.check_password(self.validated_data['old_password']):
+            raise serializers.ValidationError({'old_password': 'old password does not match'})
+
+        if self.validated_data['new_password'] != self.validated_data['old_password']:
+            user.set_password(self.validated_data['new_password'])
+            user.save()
+            return user
+        else:
+            raise serializers.ValidationError({'old_password': 'old password and new password can not be same'})

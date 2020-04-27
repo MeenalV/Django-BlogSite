@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import action
 from django.http import Http404
 from rest_framework.permissions import IsAuthenticated
-from accounts.serializers import UserRegisterSerializer, UserDetailSerializer
+from accounts.serializers import UserRegisterSerializer, UserDetailSerializer, ChangePasswordSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
@@ -12,7 +12,12 @@ from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
 class UserRegisterView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = UserRegisterSerializer
-    queryset = ''
+
+    def get_serializer_class(self):
+        serializer_class = UserRegisterSerializer
+        if self.action == 'change_password':
+            serializer_class = ChangePasswordSerializer
+        return serializer_class
 
     def create(self, request, *args, **kwargs):
         """
@@ -46,6 +51,16 @@ class UserRegisterView(viewsets.GenericViewSet, mixins.CreateModelMixin):
         users = serialized.details(by=request.user)
         serialized = UserDetailSerializer(users)
         return Response(serialized.data, status=200)
+
+    @action(methods=['POST', ], detail=False, permission_classes=[IsAuthenticated])
+    def change_password(self, request):
+        serialized = self.get_serializer(data=request.data, context={'request': request})
+        if serialized.is_valid(raise_exception=True):
+            users = serialized.change_password(by=request.user)
+            serialized = UserDetailSerializer(users)
+            return Response(serialized.data, status=200)
+        raise Http404
+
 
 
 class ObtainAccessTokenSerializer(TokenObtainPairSerializer):

@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from blog import views
+from django.conf.urls import url, include
+from rest_framework import routers
+from blog.api import BlogView
+
+router = routers.DefaultRouter()
+router.register('blog', BlogView, 'blog')
 
 urlpatterns = [
+    path(r'api/v1/', include(router.urls)),
     path('', views.display_blog, name='index'),
     path(r'blog/write/', views.blog_write, name='write_blog'),
 
