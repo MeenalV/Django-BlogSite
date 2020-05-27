@@ -25,3 +25,12 @@ class Blog(models.Model):
     by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+# class BlogInteraction(models.Model) :
+#     blogId = models.ForeignKey(Blog , on_delete = models.CASCADE , related_name = 'blogInteraction')
+#     by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blogInteraction')
+#     comment = models.CharField(max_length=500)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     interactionType =  models.CharField(max_length=100)

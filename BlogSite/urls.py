@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< Updated upstream
 from rest_framework.documentation import include_docs_urls
 from rest_framework.permissions import AllowAny
 from django.conf.urls import url
@@ -38,4 +39,17 @@ urlpatterns = [
     # path('accounts/login/', BlogLoginView.as_view(), name='login'),
     # path('auth/', include('api.urls')),
     # path("api/auth/", include("api.urls")),
+# =======
+# from blog import views
+# from accounts.views import BlogLoginView
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', include('accounts.urls')),
+#     path('accounts/login/', BlogLoginView.as_view(), name='login'),
+#     path('', include('blog.urls')),
+#     path('accounts/', include('django.contrib.auth.urls')),
+#     path('auth/', include('api.urls')),
+#     path("api/auth/", include("api.urls")),
+# >>>>>>> Stashed changes
 ]
